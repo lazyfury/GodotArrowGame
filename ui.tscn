@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dgoweerypmakt"]
+
+[ext_resource type="Texture2D" uid="uid://dcn1rajuqffcn" path="res://images/settings.png" id="1_fyqef"]
+
+[node name="Control" type="Control" unique_id=1729862331]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1106571651]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -109.0
+offset_top = 26.999998
+offset_right = 57.0
+offset_bottom = 177.0
+grow_horizontal = 0
+scale = Vector2(0.40063065, 0.4406209)
+texture_normal = ExtResource("1_fyqef")

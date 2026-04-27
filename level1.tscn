@@ -1,0 +1,234 @@
+[gd_scene format=3 uid="uid://m7myie5psdn4"]
+
+[ext_resource type="PackedScene" uid="uid://dgoweerypmakt" path="res://ui.tscn" id="1_crycw"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_hx44q"]
+[ext_resource type="Script" uid="uid://b2yt4t8d3g5be" path="res://scripts/launcher.gd" id="1_jwv3a"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_mx85b"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_hx44q"]
+[ext_resource type="Texture2D" uid="uid://cf6tfrmjev3bx" path="res://images/back.png" id="3_ootpb"]
+[ext_resource type="PackedScene" uid="uid://ewq1onookh38" path="res://HitObject.tscn" id="4_v38iq"]
+[ext_resource type="Shader" uid="uid://eayrkej82xjv" path="res://dot_line2d.gdshader" id="5_usj0q"]
+[ext_resource type="PackedScene" uid="uid://b8wocw1fg2cb8" path="res://HitObjectBox.tscn" id="5_v8kj3"]
+[ext_resource type="Texture2D" uid="uid://dbcybmkt5tyvp" path="res://images/right.png" id="5_xy4tn"]
+[ext_resource type="PackedScene" uid="uid://dfhb5ms6nrxly" path="res://FireProjectile2D.tscn" id="6_n8vhr"]
+[ext_resource type="Script" uid="uid://ccmee47beliqf" path="res://scripts/take_damage_object.gd" id="7_i2041"]
+[ext_resource type="Script" uid="uid://bo2coa6dvmmfq" path="res://scripts/arrow_follow_marker_2d.gd" id="10_n8vhr"]
+
+[sub_resource type="Resource" id="Resource_n8vhr"]
+script = ExtResource("2_hx44q")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx44q"]
+size = Vector2(2866, 1491)
+
+[sub_resource type="Curve" id="Curve_n8vhr"]
+_data = [Vector2(0.012019232, 0.9840882), 0.0, 0.0, 0, 0, Vector2(0.9855769, 0.26540196), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_usj0q"]
+shader = ExtResource("5_usj0q")
+shader_parameter/dash_length = 2.00000009430148
+shader_parameter/gap_length = 3.00000014180148
+
+[node name="Node2D" type="Node2D" unique_id=337854749]
+
+[node name="ColorBackground" type="Node2D" parent="." unique_id=128956113]
+
+[node name="ColorRect" type="ColorRect" parent="ColorBackground" unique_id=1323242849]
+offset_left = -1983.0
+offset_top = -1163.0
+offset_right = 2204.0
+offset_bottom = 992.0
+mouse_filter = 2
+color = Color(0.49999422, 0.5709968, 0.6008451, 1)
+
+[node name="ParallaxBackground" type="Node2D" parent="." unique_id=46726185]
+
+[node name="Parallax2D3" type="Parallax2D" parent="ParallaxBackground" unique_id=844761904]
+
+[node name="Polygon2D3" type="Polygon2D" parent="ParallaxBackground/Parallax2D3" unique_id=62270456]
+position = Vector2(768, 0)
+color = Color(0.56994367, 0.6397652, 0.66698176, 1)
+polygon = PackedVector2Array(-2216, 460, -1085, 51, -740, -287, -698, -217, -500, -462, -254, -254, -184, -285, 152, 33, 493, 120, 724, -96, 817, -36, 1105, -309, 1862, 299, 2604, 945, 1560, 1635, -1757, 1627, -2246, 1053)
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground" unique_id=1910396201]
+scroll_scale = Vector2(0.8, 1)
+
+[node name="Polygon2D" type="Polygon2D" parent="ParallaxBackground/Parallax2D" unique_id=996768760]
+color = Color(0.3856188, 0.44991446, 0.47484297, 1)
+polygon = PackedVector2Array(-2216, 460, -1026, -201, -902, -152, -500, -462, -145, -100, -52, -167, 493, 120, 724, -96, 817, -36, 1105, -309, 1862, 299, 2604, 945, 1560, 1635, -1757, 1627, -2246, 1053)
+
+[node name="Parallax2D2" type="Parallax2D" parent="ParallaxBackground" unique_id=1685476748]
+scroll_scale = Vector2(0.5, 0.8)
+
+[node name="Polygon2D2" type="Polygon2D" parent="ParallaxBackground/Parallax2D2" unique_id=2145990235]
+position = Vector2(273, 315)
+color = Color(0.21050721, 0.21050721, 0.21050721, 1)
+polygon = PackedVector2Array(-2216, 460, -1679, 56, -1271, 51, -872, -56, -695, -105, -573, -124, -443, -157, -298, -161, -160, -117, -4, -28, 190, 7, 402.6223, -41.558105, 729, -24, 894, -105, 1125, -143, 1384, -77, 1862, 299, 2604, 945, 1560, 1635, -1757, 1627, -2246, 1053)
+uv = PackedVector2Array(-2216, 460, -1026, -201, -832, -217, -708.2532, -281.25983, -576.80383, -286.41467, -494.3258, -234.86597, -314, -180, -247, -187, -4, -28, 180, 58, 402.6223, -41.558105, 729, -24, 894, -105, 1039, -231, 1862, 299, 2604, 945, 1560, 1635, -1757, 1627, -2246, 1053)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1868520085]
+top_level = true
+position = Vector2(3, -145.5)
+zoom = Vector2(0.82379866, 0.82379866)
+limit_left = -1074
+limit_top = -951
+limit_right = 1792
+limit_bottom = 540
+editor_draw_limits = true
+
+[node name="PhantomCamera2D" type="Node2D" parent="Camera2D" unique_id=2114366714 node_paths=PackedStringArray("follow_targets")]
+top_level = true
+position = Vector2(3, -145.5)
+script = ExtResource("1_mx85b")
+follow_mode = 3
+follow_targets = [NodePath("../../Area2D/Marker2D2"), NodePath("../../Area2D/Marker2D3"), NodePath("../../Tower"), NodePath("../../Tower/Marker2D"), NodePath("../../Tower/ArrowFollowMarker2D"), NodePath("../../Area2D/Marker2D")]
+zoom = Vector2(0.82379866, 0.82379866)
+frame_preview = false
+tween_resource = SubResource("Resource_n8vhr")
+follow_damping = true
+lookahead = true
+auto_zoom = true
+auto_zoom_min = 0.8
+auto_zoom_margin = Vector4(40, 20, 200, 0)
+draw_limits = true
+limit_target = NodePath("../../Area2D/CollisionShape2D")
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1342967924]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_hx44q")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="Label" type="Label" parent="." unique_id=1084703615]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.5
+offset_top = -12.0
+offset_right = 74.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hello World. 你好👋"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=377838232]
+position = Vector2(-957, -75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1584109294]
+position = Vector2(1316, -130.5)
+shape = SubResource("RectangleShape2D_hx44q")
+
+[node name="Marker2D" type="Marker2D" parent="Area2D" unique_id=1550160061]
+position = Vector2(473, -52)
+
+[node name="Marker2D2" type="Marker2D" parent="Area2D" unique_id=2107447398]
+position = Vector2(1634, 346)
+
+[node name="Marker2D3" type="Marker2D" parent="Area2D" unique_id=1951930790]
+position = Vector2(957, -467)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=62475207]
+
+[node name="Control" parent="CanvasLayer" unique_id=1729862331 instance=ExtResource("1_crycw")]
+offset_left = 1.0
+offset_right = 1.0
+mouse_filter = 1
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1725796781]
+z_index = 1
+width_curve = SubResource("Curve_n8vhr")
+joint_mode = 2
+
+[node name="Tower" type="Node2D" parent="." unique_id=2057152189]
+position = Vector2(-686, -133)
+
+[node name="Launcher" type="Node2D" parent="Tower" unique_id=113445900 node_paths=PackedStringArray("line")]
+script = ExtResource("1_jwv3a")
+projectilePrefabs = ExtResource("6_n8vhr")
+line = NodePath("../../Line2D")
+max_charge_time = 0.5
+min_power = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="Tower/Launcher" unique_id=1441968925]
+rotation = 3.1415927
+scale = Vector2(0.4240038, 0.4240038)
+texture = ExtResource("3_ootpb")
+
+[node name="Marker2D" type="Marker2D" parent="Tower/Launcher" unique_id=1945340395]
+position = Vector2(0, 3)
+
+[node name="Label" type="Label" parent="Tower" unique_id=1425807721]
+offset_left = -22.0
+offset_top = -57.0
+offset_right = 6.0
+offset_bottom = -34.0
+text = "100"
+
+[node name="PreviewLine2D" type="Line2D" parent="Tower" unique_id=1283305873]
+material = SubResource("ShaderMaterial_usj0q")
+width = 5.0
+texture_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Tower/PreviewLine2D" unique_id=1221576488]
+visible = false
+scale = Vector2(0.2698412, 0.26984128)
+texture = ExtResource("5_xy4tn")
+
+[node name="Marker2D" type="Marker2D" parent="Tower" unique_id=1355408202]
+position = Vector2(-145, 95)
+
+[node name="ArrowFollowMarker2D" type="Marker2D" parent="Tower" unique_id=1200892240]
+script = ExtResource("10_n8vhr")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1836935375]
+position = Vector2(-120, 0)
+collision_layer = 2049
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1927969782]
+polygon = PackedVector2Array(-1679, 352, -1603, 25, -470, -15, -447, 128, -413, 225, -254, 238, -81, 256, 120, 241, 443, 259, 588, 247, 751, 259, 1173, 247, 1469, 260, 2098, 344, 2063, 1175, -1701, 1145)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" unique_id=836203390]
+position = Vector2(3, -3)
+color = Color(0.058420584, 0.0584206, 0.058420606, 1)
+polygon = PackedVector2Array(-1679, 352, -1603, 25, -470, -15, -447, 128, -413, 225, -254, 238, -81, 256, 120, 241, 443, 259, 588, 247, 751, 259, 1173, 247, 1469, 260, 2098, 344, 2063, 1175, -1701, 1145)
+
+[node name="RigidBody2D" parent="." unique_id=529842903 instance=ExtResource("4_v38iq")]
+position = Vector2(63, -418)
+
+[node name="RigidBody2D2" parent="." unique_id=522404131 instance=ExtResource("4_v38iq")]
+position = Vector2(388, -255)
+
+[node name="RigidBody2D3" parent="." unique_id=709330104 instance=ExtResource("4_v38iq")]
+position = Vector2(342, -380)
+
+[node name="RigidBody2D4" parent="." unique_id=2134587707 instance=ExtResource("4_v38iq")]
+position = Vector2(186, -417)
+
+[node name="RigidBody2D5" parent="." unique_id=1988300142 instance=ExtResource("4_v38iq")]
+position = Vector2(186, -273)
+
+[node name="RigidBody2D11" parent="." unique_id=175650718 instance=ExtResource("5_v8kj3")]
+position = Vector2(50, 56)
+
+[node name="RigidBody2D10" parent="." unique_id=948473130 instance=ExtResource("5_v8kj3")]
+position = Vector2(57, 110)
+
+[node name="RigidBody2D9" parent="." unique_id=637850923 instance=ExtResource("5_v8kj3")]
+position = Vector2(52, 160)
+
+[node name="RigidBody2D6" parent="." unique_id=669404253 instance=ExtResource("5_v8kj3")]
+position = Vector2(56, 211)
+
+[node name="RigidBody2D7" parent="." unique_id=1490011454 instance=ExtResource("5_v8kj3")]
+position = Vector2(246, -500)
+
+[node name="RigidBody2D8" parent="." unique_id=587623662 instance=ExtResource("5_v8kj3")]
+position = Vector2(263, -311)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1938990757]
+script = ExtResource("7_i2041")

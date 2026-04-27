@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cyjr5vd5dp3w"]
+
+[ext_resource type="Texture2D" uid="uid://dqtk0h4hiopj" path="res://images/spark.png" id="1_ndcm0"]
+[ext_resource type="Script" uid="uid://ms0b7ln8coqs" path="res://hit_particle.gd" id="2_3kye0"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bb7go"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 93.028
+initial_velocity_max = 425.75998
+angular_velocity_min = -139.35
+angular_velocity_max = 162.57999
+gravity = Vector3(0, 980, 0)
+scale_min = 0.0
+scale_max = 0.25
+scale_over_velocity_max = 88.71
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ndcm0"]
+lifetime_randomness = 0.17
+particle_flag_disable_z = true
+inherit_velocity_ratio = 0.513
+direction = Vector3(-1, 0, 0)
+initial_velocity_min = 305.69998
+initial_velocity_max = 787.56
+gravity = Vector3(0, 0, 0)
+scale_max = 8.0
+color = Color(0.043039158, 0.04303915, 0.04303915, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" unique_id=1783276613]
+emitting = false
+amount = 64
+texture = ExtResource("1_ndcm0")
+lifetime = 0.35000000000000003
+one_shot = true
+explosiveness = 0.73
+process_material = SubResource("ParticleProcessMaterial_bb7go")
+script = ExtResource("2_3kye0")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=2103961879]
+position = Vector2(-3, 0)
+emitting = false
+interp_to_end = 0.018
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_ndcm0")

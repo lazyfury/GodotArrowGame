@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bqcvuogt42bp3"]
+
+[ext_resource type="Texture2D" uid="uid://dqtk0h4hiopj" path="res://images/spark.png" id="1_gk573"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mviq"]
+size = Vector2(14, 14)
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=249659830]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=170387356]
+shape = SubResource("RectangleShape2D_6mviq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1901644766]
+scale = Vector2(0.30796114, 0.30428183)
+texture = ExtResource("1_gk573")
