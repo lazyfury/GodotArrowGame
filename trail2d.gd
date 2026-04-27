@@ -10,6 +10,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	add_point(parent.global_position)
-	if points.size() > 10:
+	if points.size() > 24:
 		remove_point(0)
 	pass

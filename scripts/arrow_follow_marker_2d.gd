@@ -5,6 +5,7 @@ var watch:Node2D
 
 @onready var tower: Node2D = $".."
 @onready var phantom_camera_2d: PhantomCamera2D = $"../../Camera2D/PhantomCamera2D"
+@onready var launcher: Node2D = $"../Launcher"
 
 var is_backing_to_tower:bool = false
 
@@ -21,6 +22,8 @@ func _process(delta: float) -> void:
 		var dist:float = (tower.global_position - global_position).length()
 		if dist < 100:
 			is_backing_to_tower = false
+			if launcher.last_arrow != null:
+				watch = launcher.last_arrow
 		return
 	if watch != null:
 		phantom_camera_2d.lookahead = true

@@ -14,6 +14,7 @@ enum MotionType {
 @export var gravity_scale: float = 1.0
 @export var life_time: float = 5.0
 
+@onready var fire_gpu_particles_2d: GPUParticles2D = $GPUParticles2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var time_passed: float = 0.0
@@ -76,6 +77,9 @@ func on_hit(collision:KinematicCollision2D):
 	#phantom_camera_2d.append_follow_targets(self)
 	
 	reparent(collision.get_collider(), true)  # 👈 关键：保持 global transform
+	
+	#// wranning
+	if fire_gpu_particles_2d != null: fire_gpu_particles_2d.restart()
 
 static func simulate(start_pos: Vector2, steps: int, dt: float,dir:Vector2,speed:float) -> Array:
 	var points: Array = []

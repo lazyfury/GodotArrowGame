@@ -16,6 +16,8 @@ extends RigidBody2D
 var random:RandomNumberGenerator = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hit_effect_scene.instantiate()
+	
 	health_component.connect("hp_change",on_hp_change)
 	on_hp_change(0)
 	pass # Replace with function body.
