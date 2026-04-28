@@ -1,10 +1,11 @@
 extends GPUParticles2D
-class_name HitParticle
 
-@onready var gpu_particles_2d_2: GPUParticles2D = $GPUParticles2D2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	lifetime = 0.8
+	amount = 10
+	explosiveness = .8
 	pass # Replace with function body.
 
 
@@ -12,10 +13,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func play()->void:
-	self.restart()
-	if gpu_particles_2d_2 != null:
-		gpu_particles_2d_2.restart()
-		
-	await get_tree().create_timer(2.0).timeout
-	queue_free()
+
+
+func _on_character_body_2d_hit() -> void:
+	await  get_tree().create_timer(.3).timeout
+	lifetime = 1.8
+	explosiveness = .1
+	amount = 24

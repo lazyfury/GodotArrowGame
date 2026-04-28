@@ -19,6 +19,13 @@
 script = ExtResource("2_hx44q")
 metadata/_custom_type_script = "uid://8umksf8e80fw"
 
+[sub_resource type="Environment" id="Environment_eqrsh"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.8
+glow_bloom = 0.2
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hx44q"]
 size = Vector2(2866, 1491)
 
@@ -30,6 +37,9 @@ point_count = 3
 shader = ExtResource("5_usj0q")
 shader_parameter/dash_length = 2.00000009430148
 shader_parameter/gap_length = 3.00000014180148
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_eqrsh"]
+polygon = PackedVector2Array(-1679, 352, -1693, -5, -653, 5, -470, 2, -428, 132, -359, 233, -254, 238, -81, 256, 120, 241, 443, 259, 588, 247, 751, 259, 1173, 247, 1469, 260, 2098, 344, 2063, 1175, -1701, 1145)
 
 [node name="Node2D" type="Node2D" unique_id=337854749]
 
@@ -65,13 +75,13 @@ scroll_scale = Vector2(0.5, 0.8)
 [node name="Polygon2D2" type="Polygon2D" parent="ParallaxBackground/Parallax2D2" unique_id=2145990235]
 position = Vector2(273, 315)
 color = Color(0.21050721, 0.21050721, 0.21050721, 1)
-polygon = PackedVector2Array(-2216, 460, -1679, 56, -1271, 51, -872, -56, -695, -105, -573, -124, -443, -157, -298, -161, -160, -117, -4, -28, 190, 7, 402.6223, -41.558105, 729, -24, 894, -105, 1125, -143, 1384, -77, 1862, 299, 2604, 945, 1560, 1635, -1757, 1627, -2246, 1053)
+polygon = PackedVector2Array(-2216, 460, -1679, 56, -1271, 51, -872, -56, -695, -105, -573, -124, -443, -157, -298, -161, -160, -117, 14, -76, 236, -32, 402.6223, -41.558105, 729, -24, 894, -105, 1071, -120, 1360, -40, 1638, 3, 1862, 299, 2604, 945, 1560, 1635, -1757, 1627, -2246, 1053)
 uv = PackedVector2Array(-2216, 460, -1026, -201, -832, -217, -708.2532, -281.25983, -576.80383, -286.41467, -494.3258, -234.86597, -314, -180, -247, -187, -4, -28, 180, 58, 402.6223, -41.558105, 729, -24, 894, -105, 1039, -231, 1862, 299, 2604, 945, 1560, 1635, -1757, 1627, -2246, 1053)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1868520085]
 top_level = true
-position = Vector2(-77.5, -33.5)
-zoom = Vector2(1.0939511, 1.0939511)
+position = Vector2(-77.5, -101)
+zoom = Vector2(1.1842105, 1.1842105)
 limit_left = -1074
 limit_top = -951
 limit_right = 1792
@@ -80,11 +90,11 @@ editor_draw_limits = true
 
 [node name="PhantomCamera2D" type="Node2D" parent="Camera2D" unique_id=2114366714 node_paths=PackedStringArray("follow_targets")]
 top_level = true
-position = Vector2(-77.5, -33.5)
+position = Vector2(-77.5, -101)
 script = ExtResource("1_mx85b")
 follow_mode = 3
 follow_targets = [NodePath("../../Tower/ArrowFollowMarker2D"), NodePath("../../Area2D/Marker2D2"), NodePath("../../Area2D/Marker2D"), NodePath("../../Tower/TowerAnchor")]
-zoom = Vector2(1.0939511, 1.0939511)
+zoom = Vector2(1.1842105, 1.1842105)
 tween_resource = SubResource("Resource_n8vhr")
 follow_damping = true
 lookahead = true
@@ -101,27 +111,17 @@ process_physics_priority = 300
 script = ExtResource("1_hx44q")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
-[node name="Label" type="Label" parent="." unique_id=1084703615]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -74.5
-offset_top = -12.0
-offset_right = 74.5
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Hello World. 你好👋"
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=499119407 groups=["World"]]
+environment = SubResource("Environment_eqrsh")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1254702456]
 position = Vector2(-957, -75)
-color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+color = Color(0.8196545, 0.8196545, 0.8196543, 1)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=377838232]
 position = Vector2(-957, -75)
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1584109294]
 position = Vector2(1316, -130.5)
@@ -129,7 +129,7 @@ shape = SubResource("RectangleShape2D_hx44q")
 debug_color = Color(0, 0.6, 0.69803923, 0.105882354)
 
 [node name="Marker2D" type="Marker2D" parent="Area2D" unique_id=1550160061]
-position = Vector2(1205, -327)
+position = Vector2(1217, -462)
 
 [node name="Marker2D2" type="Marker2D" parent="Area2D" unique_id=2107447398]
 position = Vector2(1281, 430)
@@ -191,54 +191,59 @@ script = ExtResource("10_n8vhr")
 
 [node name="TowerAnchor" type="Marker2D" parent="Tower" unique_id=548067245]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1836935375]
+[node name="GroundStaticBody2D" type="StaticBody2D" parent="." unique_id=1836935375]
 position = Vector2(-120, 0)
 collision_layer = 2049
 collision_mask = 0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1927969782]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GroundStaticBody2D" unique_id=1927969782]
 polygon = PackedVector2Array(-1679, 352, -1693, -5, -653, 5, -470, 2, -428, 132, -359, 233, -254, 238, -81, 256, 120, 241, 443, 259, 588, 247, 751, 259, 1173, 247, 1469, 260, 2098, 344, 2063, 1175, -1701, 1145)
 
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" unique_id=836203390]
+[node name="Polygon2D" type="Polygon2D" parent="GroundStaticBody2D" unique_id=836203390]
 position = Vector2(3, -3)
 color = Color(0.058420584, 0.0584206, 0.058420606, 1)
 polygon = PackedVector2Array(-1679, 352, -1693, -5, -653, 5, -470, 2, -428, 132, -359, 233, -254, 238, -81, 256, 120, 241, 443, 259, 588, 247, 751, 259, 1173, 247, 1469, 260, 2098, 344, 2063, 1175, -1701, 1145)
 
-[node name="RigidBody2D" parent="." unique_id=529842903 instance=ExtResource("4_v38iq")]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="GroundStaticBody2D" unique_id=1414422624]
+occluder = SubResource("OccluderPolygon2D_eqrsh")
+
+[node name="Placements" type="Node2D" parent="." unique_id=403053719]
+
+[node name="RigidBody2D" parent="Placements" unique_id=529842903 instance=ExtResource("4_v38iq")]
 position = Vector2(63, -418)
 
-[node name="RigidBody2D2" parent="." unique_id=522404131 instance=ExtResource("4_v38iq")]
+[node name="RigidBody2D2" parent="Placements" unique_id=522404131 instance=ExtResource("4_v38iq")]
 position = Vector2(388, -255)
 
-[node name="RigidBody2D3" parent="." unique_id=709330104 instance=ExtResource("4_v38iq")]
+[node name="RigidBody2D3" parent="Placements" unique_id=709330104 instance=ExtResource("4_v38iq")]
 position = Vector2(342, -380)
 
-[node name="RigidBody2D4" parent="." unique_id=2134587707 instance=ExtResource("4_v38iq")]
+[node name="RigidBody2D4" parent="Placements" unique_id=2134587707 instance=ExtResource("4_v38iq")]
 position = Vector2(186, -417)
 
-[node name="RigidBody2D5" parent="." unique_id=1988300142 instance=ExtResource("4_v38iq")]
+[node name="RigidBody2D5" parent="Placements" unique_id=1988300142 instance=ExtResource("4_v38iq")]
 position = Vector2(186, -273)
 
-[node name="RigidBody2D11" parent="." unique_id=175650718 instance=ExtResource("5_v8kj3")]
+[node name="RigidBody2D11" parent="Placements" unique_id=175650718 instance=ExtResource("5_v8kj3")]
 position = Vector2(50, 56)
 
-[node name="RigidBody2D10" parent="." unique_id=948473130 instance=ExtResource("5_v8kj3")]
+[node name="RigidBody2D10" parent="Placements" unique_id=948473130 instance=ExtResource("5_v8kj3")]
 position = Vector2(57, 110)
 
-[node name="RigidBody2D9" parent="." unique_id=637850923 instance=ExtResource("5_v8kj3")]
+[node name="RigidBody2D9" parent="Placements" unique_id=637850923 instance=ExtResource("5_v8kj3")]
 position = Vector2(52, 160)
 
-[node name="RigidBody2D6" parent="." unique_id=669404253 instance=ExtResource("5_v8kj3")]
+[node name="RigidBody2D6" parent="Placements" unique_id=669404253 instance=ExtResource("5_v8kj3")]
 position = Vector2(56, 211)
 
-[node name="RigidBody2D7" parent="." unique_id=1490011454 instance=ExtResource("5_v8kj3")]
+[node name="RigidBody2D7" parent="Placements" unique_id=1490011454 instance=ExtResource("5_v8kj3")]
 position = Vector2(246, -500)
 
-[node name="RigidBody2D8" parent="." unique_id=587623662 instance=ExtResource("5_v8kj3")]
+[node name="RigidBody2D8" parent="Placements" unique_id=587623662 instance=ExtResource("5_v8kj3")]
 position = Vector2(263, -311)
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1938990757]
+[node name="Node2D" type="Node2D" parent="Placements" unique_id=1938990757]
 script = ExtResource("7_i2041")
 
-[node name="RigidBody2D12" parent="." unique_id=591075052 instance=ExtResource("5_v8kj3")]
+[node name="RigidBody2D12" parent="Placements" unique_id=591075052 instance=ExtResource("5_v8kj3")]
 position = Vector2(362, -487)

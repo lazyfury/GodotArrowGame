@@ -30,7 +30,6 @@ func _process(delta: float) -> void:
 	pass
 
 func apply_damage(damage:float,_position:Vector2,normal:Vector2) -> void:
-	print(damage)
 	var effect:HitParticle = hit_effect_scene.instantiate()
 	effect.global_position = _position
 	get_tree().current_scene.add_child(effect)

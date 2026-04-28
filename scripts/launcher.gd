@@ -113,7 +113,7 @@ func start_drag():
 func update_drag():
 	var _drag_current = get_viewport().get_mouse_position()
 	var drag_vec = _drag_current - drag_start
-		
+	#get_global_mouse_position()
 	drag_current = _drag_current
 		
 	# 👉 限制最大距离
@@ -168,7 +168,6 @@ func release_charge():
 	shoot(dir,power + random.randfn(0,0.1))
 
 func shoot(dir:Vector2,power:float):
-	print("debug")
 	var projectile:Projectile2D = projectilePrefabs.instantiate()
 
 	projectile.global_position = marker_2d.global_position

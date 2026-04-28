@@ -47,10 +47,9 @@ save/encryption_on_exports_only=true
 
 [display]
 
-window/size/viewport_width=1440
-window/size/viewport_height=850
-window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_height"
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/aspect="expand"
 
 [editor_plugins]
 
@@ -87,4 +86,5 @@ dialogic_default_action={
 
 rendering_device/driver.windows="d3d12"
 textures/vram_compression/import_etc2_astc=true
+viewport/hdr_2d=true
 environment/defaults/default_clear_color=Color(0.10934045, 0.10934057, 0.10934054, 1)

@@ -21,5 +21,4 @@ func _process(delta: float) -> void:
 func damage(_damage:float):
 	var old_hp = hp
 	hp = clamp(hp - _damage,min_hp,max_hp)
-	print("take damage:",old_hp,hp)
 	hp_change.emit(hp)

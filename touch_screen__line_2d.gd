@@ -7,7 +7,8 @@ var last_point:Vector2
 func _process(_delta):
 	# 检测屏幕点击和移动
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		var mouse_pos = get_global_mouse_position()
+		var mouse_pos = get_viewport().get_mouse_position()
+		#print(mouse_pos)
 		if last_point != null and (mouse_pos - last_point).length() < 10:
 			return
 		# 添加新点

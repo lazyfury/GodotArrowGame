@@ -6,6 +6,8 @@ enum MotionType {
 	PARABOLA
 }
 
+signal hit
+
 @export var phantom_camera_2d: PhantomCamera2D
 
 @export var motion_type: MotionType = MotionType.LINEAR
@@ -78,6 +80,7 @@ func on_hit(collision:KinematicCollision2D):
 	
 	reparent(collision.get_collider(), true)  # 👈 关键：保持 global transform
 	
+	hit.emit()
 	#// wranning
 	if fire_gpu_particles_2d != null: fire_gpu_particles_2d.restart()
 
