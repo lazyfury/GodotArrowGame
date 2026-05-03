@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dqoogodwafvh0"
+path="res://.godot/imported/OBJMisc_HairDryerOnOff04_InMotionAudio_BrokenHairDryer.wav-463054a6856ed27f846d9040db2e3118.sample"
+
+[deps]
+
+source_file="res://sounds/InMotionAudio - Broken Hair Dryer/OBJMisc_HairDryerOnOff04_InMotionAudio_BrokenHairDryer.wav"
+dest_files=["res://.godot/imported/OBJMisc_HairDryerOnOff04_InMotionAudio_BrokenHairDryer.wav-463054a6856ed27f846d9040db2e3118.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dtn2ctrmy2c2d"
+path="res://.godot/imported/OBJMisc_HairDryerFoleyCableTension01_InMotionAudio_BrokenHairDryer.wav-dcc329adedc77ef736f418ea6c216061.sample"
+
+[deps]
+
+source_file="res://sounds/InMotionAudio - Broken Hair Dryer/OBJMisc_HairDryerFoleyCableTension01_InMotionAudio_BrokenHairDryer.wav"
+dest_files=["res://.godot/imported/OBJMisc_HairDryerFoleyCableTension01_InMotionAudio_BrokenHairDryer.wav-dcc329adedc77ef736f418ea6c216061.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

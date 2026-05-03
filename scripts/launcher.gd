@@ -14,6 +14,8 @@ signal 实例化子弹(dir:Vector2,power:float)
 @onready var preview_line_2d: Line2D = $"../PreviewLine2D"
 #@export var arrow_follow_marker_2d: Marker2D
 @onready var ability_cold_d_own: AbilityColdDOwn = $AbilityColdDOwn
+@onready var shoot_audio_stream_player_2d: AudioStreamPlayer2D = $"../../ShootAudioStreamPlayer2D"
+@onready var hold_audio_stream_player_2d: AudioStreamPlayer2D = $"../../HoldAudioStreamPlayer2D"
 
 
 @export var max_charge_time: float = 1.5   # 最大蓄力时间（秒）
@@ -120,6 +122,9 @@ func start_drag():
 	drag_current = drag_start
 	#arrow_follow_marker_2d.back_to_tower()
 	子弹跟踪归位.emit()
+	hold_audio_stream_player_2d.play()
+	await get_tree().create_timer(0.5).timeout
+	hold_audio_stream_player_2d.stop()
 
 func update_drag():
 	var _drag_current = get_viewport().get_mouse_position()
@@ -141,11 +146,13 @@ func update_drag():
 	var power = lerp(min_power, max_power, t)
 	
 	current_power = power
+	
 
 func end_drag():
 	if not is_dragging:
 		return
-
+	
+	hold_audio_stream_player_2d.stop()
 	is_dragging = false
 
 	var drag_vec = drag_current - drag_start
@@ -207,6 +214,8 @@ func shoot(dir:Vector2,power:float):
 	current_power = 0
 	#arrow_follow_marker_2d.follow(projectile)
 	子弹已发射.emit(projectile)
+	
+	shoot_audio_stream_player_2d.play()
 	
 	if camera_shake_2d != null: camera_shake_2d.shoot_recoil(-dir,0.8)
 	

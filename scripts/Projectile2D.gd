@@ -22,6 +22,7 @@ signal hit(collision:KinematicCollision2D)
 
 @onready var fire_gpu_particles_2d: GPUParticles2D = $GPUParticles2D
 @onready var trail_line_2d: Line2D = $Line2D
+@onready var hit_audio_stream_player_2d: AudioStreamPlayer2D = $HitAudioStreamPlayer2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var time_passed: float = 0.0
@@ -32,6 +33,9 @@ func _ready():
 	# 自动销毁
 	#await get_tree().create_timer(life_time).timeout
 	#queue_free()
+	hit.connect(func(collision):
+		hit_audio_stream_player_2d.play()
+	)
 	pass
 
 func setup(direction: Vector2, power: float = 1.0):
