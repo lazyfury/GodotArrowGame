@@ -12,4 +12,3 @@ func _process(delta: float) -> void:
 	add_point(parent.global_position)
 	if points.size() > 24:
 		remove_point(0)
-	pass

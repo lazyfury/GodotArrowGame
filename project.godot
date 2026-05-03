@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="ArrowGame"
+config/version="1.0.0"
 config/tags=PackedStringArray("demo", "弓箭游戏")
 run/main_scene="uid://m7myie5psdn4"
 config/features=PackedStringArray("4.6", "GL Compatibility")
@@ -18,8 +19,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+BeehaveGlobalMetrics="*uid://c3ktl6ontsdt7"
+BeehaveGlobalDebugger="*uid://bl3ma400hpvsh"
 PhantomCameraManager="*uid://duq6jhf6unyis"
-Dialogic="*uid://ds2q0uclmolvu"
 
 [dialogic]
 
@@ -47,19 +49,25 @@ save/encryption_on_exports_only=true
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1580
+window/size/viewport_height=900
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://scripts/": "teal"
 }
+
+[global_group]
+
+PhantomCamera2D=""
+CameraShake2D=""
 
 [input]
 
@@ -85,6 +93,8 @@ dialogic_default_action={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
 viewport/hdr_2d=true
-environment/defaults/default_clear_color=Color(0.10934045, 0.10934057, 0.10934054, 1)
+environment/defaults/default_clear_color=Color(0.23031491, 0.23031494, 0.23031494, 1)

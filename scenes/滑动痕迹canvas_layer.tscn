@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://de8kg244st1ag"]
+
+[ext_resource type="Script" uid="uid://2avkgvm2uqt4" path="res://scripts/touch_screen__line_2d.gd" id="1_q04fn"]
+
+[sub_resource type="Curve" id="Curve_n8vhr"]
+_data = [Vector2(0, 0.0028560162), 0.0, 0.0, 0, 0, Vector2(0.33173078, 1), 0.019818608, 0.019818608, 0, 0, Vector2(0.9879808, 0.114239216), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="滑动痕迹CanvasLayer" type="CanvasLayer" unique_id=126481117]
+
+[node name="Line2D" type="Line2D" parent="." unique_id=394725863]
+z_index = 1
+width_curve = SubResource("Curve_n8vhr")
+joint_mode = 2
+script = ExtResource("1_q04fn")

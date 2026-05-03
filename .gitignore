@@ -6,4 +6,5 @@ addons/dialogic/*
 addons/limboai/*
 addons/phantom_camera/*
 addons/dialogue_manager/*
+addons/beehave/*
 .DS_Store

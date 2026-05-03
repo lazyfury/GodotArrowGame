@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cyjr5vd5dp3w"]
 
 [ext_resource type="Texture2D" uid="uid://dqtk0h4hiopj" path="res://images/spark.png" id="1_ndcm0"]
-[ext_resource type="Script" uid="uid://ms0b7ln8coqs" path="res://hit_particle.gd" id="2_3kye0"]
+[ext_resource type="Script" uid="uid://ms0b7ln8coqs" path="res://scripts/hit_particle.gd" id="2_3kye0"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bb7go"]
 particle_flag_disable_z = true

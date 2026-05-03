@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://ewq1onookh38"]
+
+[ext_resource type="Texture2D" uid="uid://jsk8tsrr4kcq" path="res://images/circle.png" id="1_s60yl"]
+[ext_resource type="Script" uid="uid://vy6a5be2kq8q" path="res://scripts/hit_object.gd" id="1_v3uww"]
+[ext_resource type="Script" uid="uid://c5b82h83k6uin" path="res://scripts/HealthComponent.gd" id="3_llepx"]
+[ext_resource type="Script" uid="uid://c31v1gsf3mkj8" path="res://scripts/only_x_follow_ui_control.gd" id="4_fvr6v"]
+[ext_resource type="Texture2D" uid="uid://cvlrbcawb4sly" path="res://images/三角形.png" id="5_4memr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35ku6"]
+radius = 23.086792
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fvr6v"]
+bg_color = Color(0.16026929, 0.16026929, 0.16026932, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.047557652, 0.04755766, 0.047557585, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llepx"]
+bg_color = Color(0.7875421, 4.1633098e-06, 5.7756904e-07, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_4memr"]
+font_size = 15
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=529842903]
+collision_layer = 2049
+script = ExtResource("1_v3uww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=533417434]
+shape = SubResource("CircleShape2D_35ku6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=678408378]
+z_index = 1
+scale = Vector2(0.2582423, 0.2582423)
+texture = ExtResource("1_s60yl")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=58493231]
+script = ExtResource("3_llepx")
+metadata/_custom_type_script = "uid://c5b82h83k6uin"
+
+[node name="OnlyXFollowUIControl" type="Control" parent="." unique_id=1815673395]
+top_level = true
+z_index = 12
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_fvr6v")
+
+[node name="HealthProgressBar" type="ProgressBar" parent="OnlyXFollowUIControl" unique_id=958641947]
+z_index = 9
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_top = -47.0
+offset_right = 12.0
+offset_bottom = -31.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/background = SubResource("StyleBoxFlat_fvr6v")
+theme_override_styles/fill = SubResource("StyleBoxFlat_llepx")
+value = 50.0
+show_percentage = false
+
+[node name="TextureRect" type="TextureRect" parent="OnlyXFollowUIControl" unique_id=2128257064]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.0
+offset_top = -32.0
+offset_right = 50.867874
+offset_bottom = 39.19113
+grow_horizontal = 2
+scale = Vector2(0.17979175, 0.09832686)
+texture = ExtResource("5_4memr")
+
+[node name="HealthLabel" type="Label" parent="OnlyXFollowUIControl" unique_id=1965176538]
+layout_mode = 0
+offset_left = -31.0
+offset_top = -68.0
+offset_right = 18.0
+offset_bottom = -46.0
+text = "50/100"
+label_settings = SubResource("LabelSettings_4memr")

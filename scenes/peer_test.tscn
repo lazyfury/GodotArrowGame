@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://knodepfnu4eg"]
+
+[ext_resource type="Script" uid="uid://c7ny1pley3qd8" path="res://scripts/peer_game_manager.gd" id="1_gsyiq"]
+[ext_resource type="Script" uid="uid://bqwgihh8vv5h4" path="res://scripts/cold_down_ui_manager.gd" id="2_gp714"]
+[ext_resource type="Texture2D" uid="uid://dcn1rajuqffcn" path="res://images/settings.png" id="3_tru3m"]
+
+[node name="PeerTest" type="Node2D" unique_id=142865547]
+
+[node name="PeerGameManager" type="Node" parent="." unique_id=1256649652 node_paths=PackedStringArray("start_btn", "join_btn")]
+script = ExtResource("1_gsyiq")
+start_btn = NodePath("../CanvasLayer/Control/Button")
+join_btn = NodePath("../CanvasLayer/Control/Button2")
+metadata/_custom_type_script = "uid://c7ny1pley3qd8"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="PeerGameManager" unique_id=864730899]
+_spawnable_scenes = PackedStringArray("uid://c7jobiyjdti6j")
+spawn_path = NodePath("../../Players")
+
+[node name="MultiplayerSpawnerBullet" type="MultiplayerSpawner" parent="PeerGameManager" unique_id=829914244]
+_spawnable_scenes = PackedStringArray("uid://dfhb5ms6nrxly")
+spawn_path = NodePath("../..")
+
+[node name="Players" type="Node" parent="." unique_id=1430356859]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=490951316]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=865214275]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1119615813]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="CanvasLayer/Control" unique_id=1387520603]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 19.0
+offset_right = 74.0
+offset_bottom = 50.0
+text = "开始"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Control" unique_id=1990343797]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 61.0
+offset_right = 74.0
+offset_bottom = 92.0
+text = "联机"
+
+[node name="ColdDownUIManager" type="Control" parent="CanvasLayer" unique_id=304573248 node_paths=PackedStringArray("game_manager")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 489.0
+offset_top = 816.0
+offset_right = 529.0
+offset_bottom = 856.0
+script = ExtResource("2_gp714")
+game_manager = NodePath("../../PeerGameManager")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ColdDownUIManager" unique_id=97365668]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Control" type="Control" parent="CanvasLayer/ColdDownUIManager/HBoxContainer" unique_id=728274743]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/ColdDownUIManager/HBoxContainer/Control" unique_id=1521995279]
+layout_mode = 0
+offset_right = 166.0
+offset_bottom = 150.0
+scale = Vector2(0.33990836, 0.33990836)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+fill_mode = 4
+texture_under = ExtResource("3_tru3m")
+texture_progress = ExtResource("3_tru3m")
+tint_under = Color(0.16565639, 0.16565642, 0.16565639, 1)
+
+[node name="CDLabel2" type="Label" parent="CanvasLayer/ColdDownUIManager/HBoxContainer" unique_id=410478235]
+layout_mode = 2
+text = "cd timer"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1275530693]
+collision_layer = 2049
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1464405912]
+polygon = PackedVector2Array(-990, 169, 1256, 152, 1258, 596, -1030, 567)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" unique_id=704726888]
+polygon = PackedVector2Array(-990, 169, 1256, 152, 1258, 596, -1030, 567)

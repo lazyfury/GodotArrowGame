@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://dndjdfd0236pe"]
+
+[ext_resource type="Script" uid="uid://87dxh8a26bg7" path="res://scripts/floating_damage_text.gd" id="1_56ht3"]
+[ext_resource type="FontFile" uid="uid://be8jvt832sjc3" path="res://jungle-adventurer/JungleAdventurer.ttf" id="1_mspwy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pfaeg"]
+font = ExtResource("1_mspwy")
+font_size = 24
+outline_size = 2
+outline_color = Color(0.054846495, 0.051028296, 0.050520957, 1)
+stacked_outline_count = 1
+stacked_outline_0/size = 3
+stacked_outline_0/color = Color(0.00011382803, 0.00011382803, 0.00011382803, 1)
+
+[sub_resource type="Animation" id="Animation_56ht3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-24, -12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5832324, 0.5832324)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mspwy"]
+resource_name = "fade_out"
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"new_marker",
+"time": 1.0
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 1),
+"transitions": PackedFloat32Array(1, 0.4061261, 1),
+"update": 0,
+"values": [Vector2(-24, -12), Vector2(-24, -7.74), Vector2(-24, -200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.4, 1),
+"transitions": PackedFloat32Array(1, 0.6155726, 0.6155726, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.5832324, 0.5832324)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_56ht3"]
+_data = {
+&"RESET": SubResource("Animation_56ht3"),
+&"fade_out": SubResource("Animation_mspwy")
+}
+
+[node name="FloatingDamageText" type="Node2D" unique_id=1380281259]
+z_index = 9
+script = ExtResource("1_56ht3")
+
+[node name="Label" type="Label" parent="." unique_id=1774149123]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -12.0
+offset_right = 24.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5832324, 0.5832324)
+text = "- 100"
+label_settings = SubResource("LabelSettings_pfaeg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1554651677]
+libraries/ = SubResource("AnimationLibrary_56ht3")
+autoplay = &"fade_out"

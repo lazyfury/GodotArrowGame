@@ -1,12 +1,19 @@
 extends Node2D
+class_name WeaponController
 
 @export var projectilePrefabs:PackedScene
+var phantom_camera_2d: PhantomCamera2D
+var camera_shake_2d: CameraShake2D
+
+signal 子弹已发射(projectile:Projectile2D)
+signal 子弹跟踪归位
+signal 实例化子弹(dir:Vector2,power:float)
 
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var label: Label = $"../Label"
 @onready var preview_line_2d: Line2D = $"../PreviewLine2D"
-@onready var arrow_follow_marker_2d: Marker2D = $"../ArrowFollowMarker2D"
-@onready var phantom_camera_2d: PhantomCamera2D = $"../../Camera2D/PhantomCamera2D"
+#@export var arrow_follow_marker_2d: Marker2D
+@onready var ability_cold_d_own: AbilityColdDOwn = $AbilityColdDOwn
 
 
 @export var max_charge_time: float = 1.5   # 最大蓄力时间（秒）
@@ -38,6 +45,7 @@ var last_arrow:Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	projectile_temp_inst = projectilePrefabs.instantiate()
 	set_process_unhandled_input(true)  # 如果用 _unhandled_input
 	
 	pass # Replace with function body.
@@ -86,6 +94,8 @@ func trajectory_sim(delta:float)->void:
 		preview_line_2d.visible = false
 
 func _unhandled_input(event: InputEvent) -> void:
+	if multiplayer.multiplayer_peer is not OfflineMultiplayerPeer and multiplayer.has_multiplayer_peer() and not is_multiplayer_authority():
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and false:
 			if event.pressed:
@@ -108,7 +118,8 @@ func start_drag():
 	is_dragging = true
 	drag_start = get_viewport().get_mouse_position()
 	drag_current = drag_start
-	arrow_follow_marker_2d.back_to_tower()
+	#arrow_follow_marker_2d.back_to_tower()
+	子弹跟踪归位.emit()
 
 func update_drag():
 	var _drag_current = get_viewport().get_mouse_position()
@@ -141,6 +152,8 @@ func end_drag():
 
 	# 👉 限制最大距离
 	var dist = min(drag_vec.length(), max_drag_distance)
+	if dist < 30:
+		return
 
 	# 👉 方向（注意：通常要反向）
 	var direction = -drag_vec.normalized()
@@ -168,6 +181,16 @@ func release_charge():
 	shoot(dir,power + random.randfn(0,0.1))
 
 func shoot(dir:Vector2,power:float):
+	if multiplayer.multiplayer_peer is not OfflineMultiplayerPeer and multiplayer.has_multiplayer_peer():
+		实例化子弹.emit(dir,power)
+		return
+	
+	if !ability_cold_d_own.is_ready:
+		print("技能冷却中")
+		return
+	
+	ability_cold_d_own.use()
+	
 	var projectile:Projectile2D = projectilePrefabs.instantiate()
 
 	projectile.global_position = marker_2d.global_position
@@ -176,13 +199,15 @@ func shoot(dir:Vector2,power:float):
 	projectile.motion_type = projectile.MotionType.PARABOLA
 	projectile.setup(dir, power)
 	projectile.phantom_camera_2d = phantom_camera_2d
-
+	projectile.camera_shake_2d = camera_shake_2d
 	get_tree().current_scene.add_child(projectile)
 	
 	last_arrow = projectile
 	
 	current_power = 0
+	#arrow_follow_marker_2d.follow(projectile)
+	子弹已发射.emit(projectile)
 	
-	arrow_follow_marker_2d.watch = projectile
-	phantom_camera_2d.follow_target = projectile
+	if camera_shake_2d != null: camera_shake_2d.shoot_recoil(-dir,0.8)
+	
 	
