@@ -49,14 +49,18 @@ save/encryption_on_exports_only=true
 
 [display]
 
-window/size/viewport_width=1580
-window/size/viewport_height=900
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[dotnet]
+
+project/assembly_name="ArrowGame"
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [file_customization]
 
@@ -83,8 +87,11 @@ dialogic_default_action={
 
 [layer_names]
 
+2d_physics/layer_1="Ground"
 2d_physics/layer_11="Projectile"
 2d_physics/layer_12="ProjectileHitAble"
+2d_physics/layer_13="Enemy"
+2d_physics/layer_14="bricks"
 
 [physics]
 

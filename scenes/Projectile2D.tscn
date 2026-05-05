@@ -41,7 +41,7 @@ properties/1/replication_mode = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=350289440 groups=["Arrow"]]
 collision_layer = 1024
-collision_mask = 2048
+collision_mask = 6145
 script = ExtResource("1_ohkkm")
 motion_type = 1
 life_time = 30.0

@@ -10,6 +10,7 @@ signal dead
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hp = clamp(min(hp,max_hp),min_hp,max_hp)
 	pass # Replace with function body.
 
 func is_dead() -> bool:

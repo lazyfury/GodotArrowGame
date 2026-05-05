@@ -16,4 +16,5 @@ func _process(delta: float) -> void:
 		timer -= 0.1
 		if game_manager.get_local_player() !=null:
 			game_manager.get_local_player().ability_cold_d_own.update(cd_label_2,texture_progress_bar)
+			pass
 	pass

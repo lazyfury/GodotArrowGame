@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://jsk8tsrr4kcq" path="res://images/circle.png" id="1_s60yl"]
 [ext_resource type="Script" uid="uid://vy6a5be2kq8q" path="res://scripts/hit_object.gd" id="1_v3uww"]
+[ext_resource type="PackedScene" uid="uid://bqcvuogt42bp3" path="res://scenes/Debris.tscn" id="2_3jtp4"]
 [ext_resource type="Script" uid="uid://c5b82h83k6uin" path="res://scripts/HealthComponent.gd" id="3_llepx"]
 [ext_resource type="Script" uid="uid://c31v1gsf3mkj8" path="res://scripts/only_x_follow_ui_control.gd" id="4_fvr6v"]
 [ext_resource type="Texture2D" uid="uid://cvlrbcawb4sly" path="res://images/三角形.png" id="5_4memr"]
@@ -41,8 +42,10 @@ corner_radius_bottom_left = 4
 font_size = 15
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=529842903]
-collision_layer = 2049
+collision_layer = 2048
+collision_mask = 10241
 script = ExtResource("1_v3uww")
+debris_scene = ExtResource("2_3jtp4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=533417434]
 shape = SubResource("CircleShape2D_35ku6")
@@ -54,6 +57,8 @@ texture = ExtResource("1_s60yl")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=58493231]
 script = ExtResource("3_llepx")
+max_hp = 30.0
+hp = 30.0
 metadata/_custom_type_script = "uid://c5b82h83k6uin"
 
 [node name="OnlyXFollowUIControl" type="Control" parent="." unique_id=1815673395]

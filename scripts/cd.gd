@@ -29,6 +29,8 @@ func _process(delta: float) -> void:
 		timer -= tick
 		if !is_ready:
 			cd_time -= tick
+			if cd_time <= 0:
+				is_ready = true
 	pass
 
 func use():

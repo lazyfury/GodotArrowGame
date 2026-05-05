@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cw6fucfh8y6u5"]
+
+[ext_resource type="PackedScene" uid="uid://ewq1onookh38" path="res://scenes/HitObject.tscn" id="1_7k104"]
+[ext_resource type="Texture2D" uid="uid://baul53n78gqj2" path="res://images/Sprite-0002.ase" id="2_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://cqfysxjh7005w" path="res://images/矛.ase" id="3_qi2p4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(30, 48)
+
+[node name="RigidBody2D" unique_id=529842903 instance=ExtResource("1_7k104")]
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=533417434]
+shape = SubResource("RectangleShape2D_4gyqm")
+
+[node name="Sprite2D" parent="." index="1" unique_id=678408378]
+texture = ExtResource("2_4gyqm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="4" unique_id=1417186128]
+position = Vector2(-15, -56)
+rotation = 0.077871166
+scale = Vector2(0.7042887, 0.7042887)
+texture = ExtResource("3_qi2p4")

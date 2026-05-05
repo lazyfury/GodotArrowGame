@@ -20,9 +20,5 @@ shape = SubResource("RectangleShape2D_o16wv")
 scale = Vector2(0.3872662, 0.3872662)
 texture = ExtResource("2_o16wv")
 
-[node name="Label" parent="." index="3" unique_id=1598634932]
-offset_top = -43.0
-offset_bottom = -20.0
-
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." index="4" unique_id=574786111]
 occluder = SubResource("OccluderPolygon2D_o16wv")

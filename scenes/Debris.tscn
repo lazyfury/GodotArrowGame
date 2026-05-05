@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://bqcvuogt42bp3"]
 
 [ext_resource type="Texture2D" uid="uid://dqtk0h4hiopj" path="res://images/spark.png" id="1_gk573"]
+[ext_resource type="Script" uid="uid://bxrqq1qt8h01" path="res://scripts/process_base_timer.gd" id="2_2uutv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6mviq"]
 size = Vector2(14, 14)
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=249659830]
+collision_layer = 8192
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=170387356]
 shape = SubResource("RectangleShape2D_6mviq")
@@ -13,3 +15,10 @@ shape = SubResource("RectangleShape2D_6mviq")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1901644766]
 scale = Vector2(0.30796114, 0.30428183)
 texture = ExtResource("1_gk573")
+
+[node name="ProcessBaseTimer" type="Node" parent="." unique_id=242195458 node_paths=PackedStringArray("node")]
+script = ExtResource("2_2uutv")
+node = NodePath("..")
+method_name = "queue_free"
+target = 10
+metadata/_custom_type_script = "uid://bxrqq1qt8h01"

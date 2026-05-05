@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c7jobiyjdti6j"]
 
-[ext_resource type="Script" uid="uid://b2yt4t8d3g5be" path="res://scripts/launcher.gd" id="1_1jxqw"]
-[ext_resource type="Script" uid="uid://bc4d6d3edgsx5" path="res://scripts/player.gd" id="1_dw050"]
-[ext_resource type="PackedScene" uid="uid://dfhb5ms6nrxly" path="res://scenes/FireProjectile2D.tscn" id="2_dw050"]
+[ext_resource type="Script" uid="uid://b2yt4t8d3g5be" path="res://player/scripts/launcher.gd" id="1_1jxqw"]
+[ext_resource type="Script" uid="uid://bc4d6d3edgsx5" path="res://player/scripts/player.gd" id="1_dw050"]
 [ext_resource type="Texture2D" uid="uid://cf6tfrmjev3bx" path="res://images/back.png" id="3_b26j0"]
+[ext_resource type="PackedScene" uid="uid://07raty8vy0tk" path="res://scenes/Projectile2D.tscn" id="3_hg6s5"]
 [ext_resource type="Script" uid="uid://bp3o4c34n1fa5" path="res://scripts/cd.gd" id="4_n7ghd"]
 [ext_resource type="Shader" uid="uid://eayrkej82xjv" path="res://dot_line2d.gdshader" id="5_nvl01"]
 [ext_resource type="Texture2D" uid="uid://dbcybmkt5tyvp" path="res://images/right.png" id="6_ivps1"]
@@ -30,7 +30,7 @@ script = ExtResource("1_dw050")
 
 [node name="Launcher" type="Node2D" parent="Tower" unique_id=1785611476]
 script = ExtResource("1_1jxqw")
-projectilePrefabs = ExtResource("2_dw050")
+projectilePrefabs = ExtResource("3_hg6s5")
 max_charge_time = 0.5
 min_power = 0.1
 

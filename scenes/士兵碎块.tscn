@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dh28e000i46ud"]
+
+[ext_resource type="PackedScene" uid="uid://bqcvuogt42bp3" path="res://scenes/Debris.tscn" id="1_uywua"]
+[ext_resource type="Texture2D" uid="uid://do6bqqmpkido8" path="res://images/body_block.png" id="2_4rsxi"]
+
+[node name="RigidBody2D" unique_id=249659830 instance=ExtResource("1_uywua")]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=170387356]
+scale = Vector2(1.3510712, 0.811358)
+
+[node name="Sprite2D" parent="." index="1" unique_id=1901644766]
+self_modulate = Color(0.88235295, 0, 0.16470589, 1)
+position = Vector2(0, 1)
+scale = Vector2(0.19192562, 0.18684754)
+texture = ExtResource("2_4rsxi")

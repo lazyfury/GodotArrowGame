@@ -157,7 +157,7 @@ color = Color(2.240106, 0.61563253, 0, 1)
 radius = 12.165525
 
 [node name="CharacterBody2D" unique_id=350289440 instance=ExtResource("1_rbqen")]
-speed = 650.0
+speed = 700.0
 life_time = 15.0
 
 [node name="箭矢附着火焰2" type="GPUParticles2D" parent="." index="2" unique_id=1480293109]
